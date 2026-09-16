@@ -69,6 +69,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .btn:disabled { opacity: .4; cursor: not-allowed; }
 .btn:not(:disabled):hover { transform: translateY(-1px); }
 .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+a.btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; width: 100%; box-sizing: border-box; }
+#paypalBuyBtn { margin-top: 0.35rem; }
 .btn.ghost { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid rgba(255,255,255,.1); }
 .btn.wide { flex: 1 1 140px; }
 .linkish { background: none; border: none; color: var(--accent-3); cursor: pointer; font: inherit; font-weight: 600; padding: 0; text-decoration: underline; text-underline-offset: 2px; }

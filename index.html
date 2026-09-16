@@ -112,18 +112,19 @@
         <li>No watermark</li>
         <li>Works offline forever after unlock</li>
       </ul>
-      <label class="field">
+      <a class="btn primary" id="paypalBuyBtn" href="https://www.paypal.me/wesgreen77/2.99" target="_blank" rel="noopener">Pay $2.99 with PayPal</a>
+      <p class="tiny" style="margin-top:0.75rem">PayPal opens in a new tab. When payment succeeds, come back and tap below.</p>
+      <p class="hint" id="unlockError" hidden></p>
+      <div class="modal-actions">
+        <button type="button" class="btn primary" id="paidUnlockBtn">I paid — unlock</button>
+        <button type="button" class="btn ghost" id="applyKeyBtn">I have a license key</button>
+        <button type="button" class="btn ghost" id="demoUnlockBtn" hidden>Demo Unlock (testing)</button>
+      </div>
+      <label class="field" id="keyField" hidden>
         <span>License key</span>
         <input type="text" id="licenseKey" placeholder="IB-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false" />
       </label>
-      <a class="btn primary" id="paypalBuyBtn" href="https://www.paypal.me/wesgreen77/2.99" target="_blank" rel="noopener">Pay $2.99 with PayPal</a>
-      <p class="tiny" style="margin-top:0.75rem">After PayPal confirms, paste this license key below:<br><strong>IB-LIFE-WGREEN-299</strong></p>
-      <p class="hint" id="unlockError" hidden></p>
-      <div class="modal-actions">
-        <button type="button" class="btn primary" id="applyKeyBtn">Unlock with key</button>
-        <button type="button" class="btn ghost" id="demoUnlockBtn" hidden>Demo Unlock (testing)</button>
-      </div>
-      <p class="tiny">PayPal.me goes to Wes Green · no subscription · one-time $2.99</p>
+      <p class="tiny">PayPal.me/wesgreen77 · one-time $2.99 · no subscription</p>
     </div>
   </div>
   <script src="app.js"></script>

@@ -49,7 +49,8 @@
     preview: $("preview"), previewMeta: $("previewMeta"), unlockBtn: $("unlockBtn"),
     unlockLink: $("unlockLink"), footerUnlock: $("footerUnlock"), unlockBadge: $("unlockBadge"),
     unlockModal: $("unlockModal"), modalClose: $("modalClose"), licenseKey: $("licenseKey"),
-    applyKeyBtn: $("applyKeyBtn"), demoUnlockBtn: $("demoUnlockBtn"), unlockError: $("unlockError"),
+    applyKeyBtn: $("applyKeyBtn"), paidUnlockBtn: $("paidUnlockBtn"), keyField: $("keyField"),
+    demoUnlockBtn: $("demoUnlockBtn"), unlockError: $("unlockError"),
   };
 
   function isUnlocked() {
@@ -95,14 +96,19 @@
     els.quality.disabled = fmt === "image/png";
   }
 
-  function openModal() { els.unlockError.hidden = true; els.unlockModal.hidden = false; els.licenseKey.focus(); }
+  function openModal() {
+    els.unlockError.hidden = true;
+    if (els.keyField) els.keyField.hidden = true;
+    if (els.licenseKey) els.licenseKey.value = "";
+    els.unlockModal.hidden = false;
+  }
   function closeModal() { els.unlockModal.hidden = true; }
   function normalizeKey(raw) { return String(raw || "").trim().toUpperCase().replace(/\s+/g, ""); }
 
   function tryUnlock(key) {
     const k = normalizeKey(key);
     if (VALID_KEYS.has(k)) { setUnlocked(k); closeModal(); return true; }
-    els.unlockError.textContent = "Invalid key. Try Demo Unlock, or paste a key from your purchase email.";
+    els.unlockError.textContent = "Invalid key. Pay with PayPal, then tap I paid — unlock, or enter a license key.";
     els.unlockError.hidden = false;
     return false;
   }
@@ -297,8 +303,24 @@
   els.footerUnlock.addEventListener("click", openModal);
   els.modalClose.addEventListener("click", closeModal);
   els.unlockModal.addEventListener("click", function (e) { if (e.target === els.unlockModal) closeModal(); });
-  els.applyKeyBtn.addEventListener("click", function () { tryUnlock(els.licenseKey.value); });
-  els.demoUnlockBtn.addEventListener("click", function () { tryUnlock(DEMO_KEY); });
+  if (els.paidUnlockBtn) {
+    els.paidUnlockBtn.addEventListener("click", function () {
+      setUnlocked("IB-LIFE-WGREEN-299");
+      closeModal();
+    });
+  }
+  els.applyKeyBtn.addEventListener("click", function () {
+    if (els.keyField && els.keyField.hidden) {
+      els.keyField.hidden = false;
+      els.unlockError.hidden = true;
+      if (els.licenseKey) els.licenseKey.focus();
+      return;
+    }
+    tryUnlock(els.licenseKey && els.licenseKey.value);
+  });
+  if (els.demoUnlockBtn) {
+    els.demoUnlockBtn.addEventListener("click", function () { tryUnlock(DEMO_KEY); });
+  }
   els.licenseKey.addEventListener("keydown", function (e) { if (e.key === "Enter") tryUnlock(els.licenseKey.value); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !els.unlockModal.hidden) closeModal(); });
 
