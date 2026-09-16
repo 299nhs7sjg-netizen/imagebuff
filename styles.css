@@ -70,7 +70,6 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .btn:not(:disabled):hover { transform: translateY(-1px); }
 .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
 a.btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; width: 100%; box-sizing: border-box; }
-#paypalBuyBtn { margin-top: 0.35rem; }
 .btn.ghost { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid rgba(255,255,255,.1); }
 .btn.wide { flex: 1 1 140px; }
 .linkish { background: none; border: none; color: var(--accent-3); cursor: pointer; font: inherit; font-weight: 600; padding: 0; text-decoration: underline; text-underline-offset: 2px; }
@@ -96,3 +95,78 @@ a.btn { display: inline-flex; align-items: center; justify-content: center; text
 .modal-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
 .hint { color: var(--danger); font-size: .85rem; margin: -.4rem 0 .6rem; }
 .tiny { margin: 0; font-size: .75rem; color: var(--muted); }
+
+/* ——— Free-tier ads (loud yellow/black sponsored bars) ——— */
+.ad-region {
+  position: relative;
+  background: repeating-linear-gradient(
+    -45deg,
+    #ffe566,
+    #ffe566 12px,
+    #ffd000 12px,
+    #ffd000 24px
+  );
+  color: #111;
+  border: 3px solid #111;
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem 0.65rem 2.6rem;
+  margin: 0.5rem 0;
+  box-shadow: 4px 4px 0 #111;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  font-weight: 650;
+}
+.ad-region[hidden] { display: none !important; }
+.ad-label {
+  position: absolute;
+  left: 0.4rem;
+  top: 0.4rem;
+  background: #111;
+  color: #ffe566;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+.ad-inner { color: #111; }
+.ad-inner strong { font-weight: 800; }
+.ad-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 0;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  box-shadow: 0 4px 0 #111;
+}
+.ad-mid.layout-ad {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+.ad-download { margin: 0 0 0.85rem; }
+.ad-sidebar { margin: 0 0 0.85rem; font-size: 0.82rem; }
+.ad-footer {
+  max-width: 1280px;
+  margin: 0 auto 0.5rem;
+  border-radius: 10px;
+}
+.ad-modal {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  box-shadow: 3px 3px 0 #111;
+}
+a.btn.is-disabled,
+a.btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: auto;
+}
+#checkoutBuyBtn { margin-top: 0.35rem; }
+.adsbygoogle { min-height: 60px; }
+
+.ad-wrap-mid { max-width: 1280px; margin: 0.75rem auto 0; padding: 0 1.5rem; }
+
