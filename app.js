@@ -1,36 +1,36 @@
 /**
  * ImageBuff — client-side resize & compress for social apps
  * Unlock ONLY via valid license key (no honor / "I paid" path).
- * VALID_KEYS: seed from KEYS.md; add more + redeploy when stock runs low.
+ * VALID_KEYS: seed from KEYS.PRIVATE.md (operator machine only; never commit).
  */
 (function () {
   "use strict";
 
   const STORAGE_KEY = "imagebuff_unlocked_v1";
   const DEMO_KEY = "IB-DEMO-UNLOCK-2026";
-  /* First ~20 sale keys from KEYS.md + demo. Buyers get keys from Gumroad/LS after payment. */
+  /* First 20 sale keys from KEYS.PRIVATE.md + demo (?demo=1 only). Old leaked keys revoked. */
   const VALID_KEYS = new Set([
     DEMO_KEY,
-    "IB-Q78P-HAJD-PDJR",
-    "IB-5AWL-ZNUE-5Q6N",
-    "IB-WD5U-2BFJ-YFNM",
-    "IB-M9FQ-HL9N-5DLR",
-    "IB-BHJ2-648X-DVNU",
-    "IB-K9QL-B548-4VRU",
-    "IB-ZDTG-SRC8-QXA6",
-    "IB-J2K7-GB8S-KN2K",
-    "IB-J9VP-MU7R-QJFM",
-    "IB-VDBK-QCSD-ZNUH",
-    "IB-Z3YM-Y32D-JM7E",
-    "IB-Y4ME-HY4B-ZZJH",
-    "IB-45M5-GLZM-QEVC",
-    "IB-TRD8-HNAF-L72B",
-    "IB-7X7S-BJQ6-4KRY",
-    "IB-6K4D-GUME-Q9DE",
-    "IB-AZZK-7F4S-LJS8",
-    "IB-RX7L-AUH2-5UXN",
-    "IB-EDDK-6L7T-N3U3",
-    "IB-D6UZ-P7VD-27LW",
+    "IB-LIFE-O86T-ZMBM-KXTC",
+    "IB-LIFE-QJ1K-UDXG-L5JB",
+    "IB-LIFE-8XG8-1LYX-501N",
+    "IB-LIFE-UFZM-VNM2-WJFZ",
+    "IB-LIFE-50J4-6LYB-LAEL",
+    "IB-LIFE-EKMG-98UG-LT5W",
+    "IB-LIFE-EQWB-0DE3-JZHC",
+    "IB-LIFE-JUNZ-3OVK-VLR1",
+    "IB-LIFE-83BA-40ON-2O2Z",
+    "IB-LIFE-XG3G-JCM3-3K6I",
+    "IB-LIFE-TF1Q-UKBK-T1X7",
+    "IB-LIFE-67ER-RHO7-55WO",
+    "IB-LIFE-2J81-OH6V-86FR",
+    "IB-LIFE-YR4V-56B1-PTC6",
+    "IB-LIFE-M0C0-33Z4-YWC9",
+    "IB-LIFE-QONB-BNDC-SPNG",
+    "IB-LIFE-D53M-L3OZ-RAWM",
+    "IB-LIFE-NN2P-I04F-0CZN",
+    "IB-LIFE-FU6G-UTW8-51PA",
+    "IB-LIFE-5DTD-I0I8-VJBC",
   ]);
 
   const FREE = { maxLongSide: 1280, maxQuality: 0.75, watermark: true };

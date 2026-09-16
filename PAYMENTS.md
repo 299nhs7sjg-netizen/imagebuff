@@ -12,7 +12,7 @@ Create a free account on **Lemon Squeezy** or **Gumroad**.
 
 1. Create a product: **ImageBuff Lifetime Unlock** — price **$2.99** (one-time).
 2. Deliver **license keys** after purchase:
-   - Upload codes from `KEYS.md` (200 sale keys in the repo; do not link that file from the site).
+   - Upload codes from **`KEYS.PRIVATE.md` on the operator machine only** (never commit this file; never put it in the public repo).
    - Gumroad: use license keys / unique codes feature, or email a key from the list.
    - Lemon Squeezy: use license keys / custom files / email delivery of a code.
 3. Copy the product **checkout URL**.
@@ -28,12 +28,12 @@ Buyers pay → receive a key → paste it in ImageBuff → `VALID_KEYS` validate
 
 ### When keys run low
 
-1. Generate more `IB-XXXX-XXXX-XXXX` codes (append to `KEYS.md`).
+1. Generate more `IB-LIFE-XXXX-XXXX-XXXX` codes into **`KEYS.PRIVATE.md`** (local only).
 2. Add the new codes to `VALID_KEYS` in `app.js`.
 3. Upload the new codes to Gumroad / Lemon Squeezy.
 4. Redeploy (push to `main`).
 
-The first **20** sale keys from `KEYS.md` are already seeded in `app.js` so early sales work once the store is live.
+The first **20** sale keys from `KEYS.PRIVATE.md` are seeded in `app.js` so early sales work once the store is live. Old leaked keys are **revoked** by this rotation and will not unlock.
 
 ---
 
@@ -76,10 +76,17 @@ After any `config.js` or `app.js` key change:
 git add -A && git commit -m "Update ImageBuff config / keys" && git push origin main
 ```
 
+**Never** `git add KEYS.PRIVATE.md` or `KEYS.md`. Both are gitignored.
+
 Live site (GitHub Pages): `https://299nhs7sjg-netizen.github.io/imagebuff/`
 
 ---
 
 ## Security note (MVP)
 
-`VALID_KEYS` lives in `app.js` (client-side). Do **not** put a public “master key” in HTML. Do not display `KEYS.md` on the site. For higher security later: signed tokens or a tiny paid key API — not required for MVP.
+`VALID_KEYS` lives in `app.js` (client-side) — only the seeded batch, not the full stock.
+
+- **Keys stock file:** `KEYS.PRIVATE.md` on the operator machine only. Never commit. Upload to Gumroad/LS from that file.
+- **Public `KEYS.md`:** removed. Do not recreate it in the repo.
+- **Rotation is the real fix** when keys leak: regenerate `KEYS.PRIVATE.md`, replace `VALID_KEYS`, redeploy. Old keys stop working immediately. Git history may still contain an old `KEYS.md`; those keys are revoked by rotation (full history purge is optional and risky for GitHub Pages).
+- For higher security later: signed tokens or a tiny paid key API — not required for MVP.
